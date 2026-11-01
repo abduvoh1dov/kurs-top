@@ -1,0 +1,23 @@
+{
+  "name": "kurstopai-react-platform",
+  "version": "1.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "server": "node server/index.cjs",
+    "build": "vite build",
+    "start": "node server/index.cjs",
+    "admin:reset": "node server/index.cjs reset-admin"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=22.12.0 <25.0.0"
+  }
+}

@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: kurstopai
+    runtime: node
+    region: frankfurt
+    plan: 0.5c-512mb
+    buildCommand: npm install --no-audit --no-fund && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    disk:
+      name: kurstopai-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 24.22.1
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: KURSTOPAI_DATA_DIR
+        value: /var/data
+      - key: KURSTOPAI_UPLOAD_DIR
+        value: /var/data/uploads/private
+      - key: KURSTOPAI_ADMIN_EMAIL
+        value: admin@kurstopai.uz
+      - key: KURSTOPAI_ADMIN_PASSWORD
+        sync: false
+      - key: KURSTOPAI_SESSION_SECRET
+        generateValue: true
